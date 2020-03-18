@@ -44,6 +44,13 @@ def get_reverse(sequence):
     'CGUA'
 >>> get_reverse('ATGC')
     'CGTA'
+
+    if sequence != "":
+        seq_uppercase=sequence.upper()
+        sequence_reverse=seq_upper[::-1]
+        return sequene_reverse
+    else:
+        return ''
     pass
 
 def get_complement(sequence):
