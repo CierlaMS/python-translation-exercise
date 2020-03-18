@@ -19,9 +19,9 @@ def translate_sequence(rna_sequence, genetic_code):
         amino_acid=""
         return amino_acid
     elif len(rna_sequence)%3 == 0:
-        for i in range(0, len(rna_sequence), 3)
-        codon=rna_sequence[0:3]
-        single_codon=genetic_code[codon]
+        for i in range(0, len(rna_sequence), 3):
+            codon=rna_sequence[i:i + 3]
+            single_codon=genetic_code[codon]
         if single_codon =="*":
             break
         else:
@@ -46,17 +46,8 @@ def get_all_translations(rna_sequence, genetic_code):
     """
 
     rna_sequence=rna_sequence.upper()
-    length_of_sequence=len(rna_sequence)
-    final_codon=length_of_sequence -3
-    aminoacid_sequence=[]
-    for base_index in range(final_codon +1): 
-        codon=rna_sequence[base_index: base_index +3] 
-        aminoacid=translate_sequence(rna_sequence[base_index:], genetic_code)
-        if aminoacid:
-            aminoacid_sequence.append(aminoacid)
-    return aminoacid_sequence
-    pass
-
+    start_codon="AUG"
+    
 def get_reverse(sequence):
     """Reverse orientation of `sequence`.
 
@@ -64,18 +55,12 @@ def get_reverse(sequence):
 
     If `sequence` is empty, an empty string is returned.
     """
-    #>>> get_reverse('AUGC')
- #   'CGUA'
-#>>> get_reverse('ATGC')
-  #  'CGTA'
-
     if sequence != "":
         sequence_upper=sequence.upper()
         sequence_reverse=sequence_upper[::-1]
         return sequence_reverse
     else:
         return ''
-    pass
 
 def get_complement(sequence):
     """Get the complement of `sequence`.
@@ -84,21 +69,16 @@ def get_complement(sequence):
 
     If `sequence` is empty, an empty string is returned.
     """
-#>>> get_complement('AUGC')
-#    'UACG'
-#>>> get_complement('ATGC')
-#    'TACG'
  
     if sequence !="":
         seq_uppercase=sequence.upper()
-        complement_sequence= []
+        complement_sequence= ""
         complement={'A': 'U', 'U': 'A', 'C': 'G', 'G': 'C'}
         for i in seq_uppercase:
             complement_sequence.append(complement[i])
         return ''.join(complement_sequence)
     else: 
         return ''
-    pass
 
 def reverse_and_complement(sequence):
     """Get the reversed and complemented form of `sequence`.
@@ -114,14 +94,13 @@ def reverse_and_complement(sequence):
 #    'GCAT'
     if sequence != "":
         seq_uppercase=sequence.upper()
-        complementary_seq= []
+        complementary_seq= ""
         complementary={'A': 'U', 'U': 'A', 'C': 'G', 'G': 'C'} 
         for i in sequence_uppercase:
             complementary_seq.append(complementary[i])
         return ''.join(complementary_seq[::-1])
     else: 
         return '' 
-    pass
 
 def get_longest_peptide(rna_sequence, genetic_code):
     """Get the longest peptide encoded by an RNA sequence.
