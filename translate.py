@@ -40,6 +40,10 @@ def get_reverse(sequence):
 
     If `sequence` is empty, an empty string is returned.
     """
+>>> get_reverse('AUGC')
+    'CGUA'
+>>> get_reverse('ATGC')
+    'CGTA'
     pass
 
 def get_complement(sequence):
