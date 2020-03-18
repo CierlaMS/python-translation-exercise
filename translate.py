@@ -53,6 +53,10 @@ def get_complement(sequence):
 
     If `sequence` is empty, an empty string is returned.
     """
+>>> get_complement('AUGC')
+    'UACG'
+>>> get_complement('ATGC')
+    'TACG'
     pass
 
 def reverse_and_complement(sequence):
