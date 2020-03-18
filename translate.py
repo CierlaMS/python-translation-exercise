@@ -67,6 +67,10 @@ def reverse_and_complement(sequence):
 
     If `sequence` is empty, an empty string is returned.
     """
+for reverse_and_complement('AUGC')
+    do 'GCAU'
+for reverse_and_complement('ATGC')
+    do 'GCAT'
     pass
 
 def get_longest_peptide(rna_sequence, genetic_code):
