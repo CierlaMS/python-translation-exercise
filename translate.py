@@ -40,10 +40,10 @@ def get_reverse(sequence):
 
     If `sequence` is empty, an empty string is returned.
     """
->>> get_reverse('AUGC')
-    'CGUA'
->>> get_reverse('ATGC')
-    'CGTA'
+    #>>> get_reverse('AUGC')
+ #   'CGUA'
+#>>> get_reverse('ATGC')
+  #  'CGTA'
 
     if sequence != "":
         seq_uppercase=sequence.upper()
@@ -60,11 +60,21 @@ def get_complement(sequence):
 
     If `sequence` is empty, an empty string is returned.
     """
->>> get_complement('AUGC')
-    'UACG'
->>> get_complement('ATGC')
-    'TACG'
-    pass
+#>>> get_complement('AUGC')
+#    'UACG'
+#>>> get_complement('ATGC')
+#    'TACG'
+ 
+    if sequence !="":
+        seq_uppercase=sequence.upper()
+        complement_sequence= []
+        complement={'A': 'U', 'U': 'A', 'C': 'G', 'G': 'C'}
+        for i in seq_uppercase:
+            complement_sequence.append(complement[i])
+        return ''.join(complement_sequence)
+    else: 
+        return '' 
+   pass
 
 def reverse_and_complement(sequence):
     """Get the reversed and complemented form of `sequence`.
