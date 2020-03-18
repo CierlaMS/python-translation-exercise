@@ -14,18 +14,19 @@ def translate_sequence(rna_sequence, genetic_code):
     an empty string is returned.
     """
     rna_sequence=rna_sequence.upper()
-    amino_acid= []
-    while True:
-        if len(rna_sequence) < 3:
-            break
+    amino_acid=""
+    if len(rna_sequence) < 3:
+        amino_acid=""
+        return amino_acid
+    elif len(rna_sequence)%3 == 0:
+        for i in range(0, len(rna_sequence), 3)
         codon=rna_sequence[0:3]
-        other_sequence=rna_sequence[3:]
-        rna_sequence=other_sequence
-        amino_acid=genetic_code[codon]
-        if amino_acid =="*":
+        single_codon=genetic_code[codon]
+        if single_codon =="*":
             break
-        amino_acid.append(amino_acid)
-    return "".join(amino_acid)
+        else:
+            amino_acid += single_codon
+    return amino_acid
     pass
 
 def get_all_translations(rna_sequence, genetic_code):
