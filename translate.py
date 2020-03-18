@@ -2,7 +2,7 @@
 
 import sys
 
-def translate_sequence(rna_sequence, genetic_code):
+def translate_sequence(rna_sequence, genetic_code): 
     """Translates a sequence of RNA into a sequence of amino acids.
 
     Translates `rna_sequence` into string of amino acids, according to the
@@ -43,6 +43,17 @@ def get_all_translations(rna_sequence, genetic_code):
     If no amino acids can be translated from `rna_sequence`, an empty list is
     returned.
     """
+
+    rna_sequence=rna_sequence.upper()
+    length_of_sequence=len(rna_sequence)
+    final_codon=length_of_sequence -3
+    aminoacid_sequence=[]
+    for base_index in range(final_codon +1): 
+        codon=rna_sequence[base_index: base_index +3] 
+        aminoacid=translate_sequence(rna_sequence[base_index:], genetic_code)
+        if aminoacid:
+            aminoacid_sequence.append(aminoacid)
+    return aminoacid_sequence
     pass
 
 def get_reverse(sequence):
