@@ -16,18 +16,17 @@ def translate_sequence(rna_sequence, genetic_code):
     rna_sequence=rna_sequence.upper()
     amino_acid=""
     if len(rna_sequence) < 3:
-        amino_acid=""
-        return amino_acid
+        break
     elif len(rna_sequence)%3 == 0:
+        return amino_acid
         for i in range(0, len(rna_sequence), 3):
             codon=rna_sequence[i:i + 3]
             single_codon=genetic_code[codon]
-        if single_codon =="*":
+        if single_codon == "*":
             break
         else:
             amino_acid += single_codon
-    return amino_acid
-    pass
+        return amino_acid
 
 def get_all_translations(rna_sequence, genetic_code):
     """Get a list of all amino acid sequences encoded by an RNA sequence.
@@ -47,7 +46,14 @@ def get_all_translations(rna_sequence, genetic_code):
 
     rna_sequence=rna_sequence.upper()
     start_codon="AUG"
-    
+    amino_acid_sequence= ""
+    for i in range(start_codon, len(rna_sequence), genetic_code):
+        codon= rna_sequence[i:i + 3]
+        if start_codon:
+            amino_acid=translate_sequence(rna_sequence[codon], genetic_code)
+            if amino_acid:
+                amino_acid_sequence.append(amino_acid)
+
 def get_reverse(sequence):
     """Reverse orientation of `sequence`.
 
@@ -88,10 +94,6 @@ def reverse_and_complement(sequence):
 
     If `sequence` is empty, an empty string is returned.
     """
-#reverse_and_complement('AUGC')
-#    'GCAU'
-#reverse_and_complement('ATGC')
-#    'GCAT'
     if sequence != "":
         seq_uppercase=sequence.upper()
         complementary_seq= ""
@@ -113,7 +115,6 @@ def get_longest_peptide(rna_sequence, genetic_code):
     If no amino acids can be translated from `rna_sequence` nor its reverse and
     complement, an empty string is returned.
     """
-    pass
 
 
 if __name__ == '__main__':
